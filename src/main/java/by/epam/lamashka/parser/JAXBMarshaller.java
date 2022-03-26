@@ -31,7 +31,7 @@ public class JAXBMarshaller implements JAXB {
       Users usersMarshalling = new Users(userList);
       logger.info("Users Marshalling:");
       m.marshal(usersMarshalling, System.out);
-      File outFile = new File("marshall.xml");
+      File outFile = new File("src/main/resources/marshall.xml");
       m.marshal(usersMarshalling, outFile);
 
       System.out.println("Users are written to file: " + outFile.getAbsolutePath());
