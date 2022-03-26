@@ -42,89 +42,91 @@ public class StaxParser implements Parser {
     XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
     try {
       XMLEventReader reader = xmlInputFactory.createXMLEventReader(resource);
-
       while (reader.hasNext()) {
-
         XMLEvent xmlEvent = reader.nextEvent();
         if (xmlEvent.isStartElement()) {
-          StartElement startElement = xmlEvent.asStartElement();
-          switch (startElement.getName().getLocalPart()) {
-            case "user":
-            case "customer":
-              Attribute userId = startElement.getAttributeByName(new QName("id"));
-              if (userId != null) {
-                id = userId.getValue();
-              }
-              break;
-            case "login":
-              xmlEvent = reader.nextEvent();
-              login = xmlEvent.asCharacters().getData();
-              break;
-            case "password":
-              xmlEvent = reader.nextEvent();
-              password = xmlEvent.asCharacters().getData();
-              break;
-            case "productNumber":
-              xmlEvent = reader.nextEvent();
-              productNumber = Integer.parseInt(xmlEvent.asCharacters().getData());
-              break;
-            case "description":
-              xmlEvent = reader.nextEvent();
-              description = xmlEvent.asCharacters().getData();
-              break;
-            case "date":
-              xmlEvent = reader.nextEvent();
-              date = LocalDateTime.parse(xmlEvent.asCharacters().getData());
-              break;
-            case "content":
-              xmlEvent = reader.nextEvent();
-              content = xmlEvent.asCharacters().getData();
-              break;
-          }
+          startElement(xmlEvent, reader);
         }
-
         if (xmlEvent.isEndElement()) {
-          EndElement endElement = xmlEvent.asEndElement();
-          switch (endElement.getName().getLocalPart()) {
-            case "user":
-              User user = new User.UserBuilder().login(login).password(password).id(id).build();
-              userList.add(user);
-              break;
-
-            case "customer":
-              User customer =
-                  new Customer.CustomerBuilder()
-                      .login(login)
-                      .password(password)
-                      .id(id)
-                      .products(productList)
-                      .orders(orderList)
-                      .build();
-              userList.add(customer);
-              orderList = new ArrayList<>();
-              productList = new ArrayList<>();
-              break;
-            case "order":
-              Order order =
-                  new Order.OrderBuilder().orderDateTime(date).orderContent(content).build();
-              orderList.add(order);
-              break;
-            case "product":
-              Product product =
-                  new Product.ProductBuilder()
-                      .productNumber(productNumber)
-                      .description(description)
-                      .build();
-              productList.add(product);
-              break;
-          }
+          endElement(xmlEvent);
         }
       }
-
     } catch (XMLStreamException e) {
       e.printStackTrace();
     }
     logger.info("StAX " + userList);
     return userList;
+  }
+
+  private void startElement(XMLEvent xmlEvent, XMLEventReader reader) throws XMLStreamException {
+    StartElement startElement = xmlEvent.asStartElement();
+    switch (startElement.getName().getLocalPart()) {
+      case "user":
+      case "customer":
+        Attribute userId = startElement.getAttributeByName(new QName("id"));
+        if (userId != null) {
+          id = userId.getValue();
+        }
+        break;
+      case "login":
+        xmlEvent = reader.nextEvent();
+        login = xmlEvent.asCharacters().getData();
+        break;
+      case "password":
+        xmlEvent = reader.nextEvent();
+        password = xmlEvent.asCharacters().getData();
+        break;
+      case "productNumber":
+        xmlEvent = reader.nextEvent();
+        productNumber = Integer.parseInt(xmlEvent.asCharacters().getData());
+        break;
+      case "description":
+        xmlEvent = reader.nextEvent();
+        description = xmlEvent.asCharacters().getData();
+        break;
+      case "date":
+        xmlEvent = reader.nextEvent();
+        date = LocalDateTime.parse(xmlEvent.asCharacters().getData());
+        break;
+      case "content":
+        xmlEvent = reader.nextEvent();
+        content = xmlEvent.asCharacters().getData();
+        break;
+    }
+  }
+
+  private void endElement(XMLEvent xmlEvent) {
+    EndElement endElement = xmlEvent.asEndElement();
+    switch (endElement.getName().getLocalPart()) {
+      case "user":
+        User user = new User.UserBuilder().login(login).password(password).id(id).build();
+        userList.add(user);
+        break;
+      case "customer":
+        User customer =
+            new Customer.CustomerBuilder()
+                .login(login)
+                .password(password)
+                .id(id)
+                .products(productList)
+                .orders(orderList)
+                .build();
+        userList.add(customer);
+        orderList = new ArrayList<>();
+        productList = new ArrayList<>();
+        break;
+      case "order":
+        Order order = new Order.OrderBuilder().orderDateTime(date).orderContent(content).build();
+        orderList.add(order);
+        break;
+      case "product":
+        Product product =
+            new Product.ProductBuilder()
+                .productNumber(productNumber)
+                .description(description)
+                .build();
+        productList.add(product);
+        break;
+    }
   }
 }

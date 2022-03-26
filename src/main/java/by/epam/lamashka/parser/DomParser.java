@@ -54,13 +54,11 @@ public class DomParser implements Parser {
           userNode = usersNodes.item(i);
           User user = parseUser(userNode);
           userList.add(user);
-          //          logger.info(user);
           break;
         case "customer":
           customerNode = usersNodes.item(i);
           User customer = parseCustomer(customerNode);
           userList.add(customer);
-          //          logger.info(customer);
           break;
       }
     }
@@ -89,21 +87,21 @@ public class DomParser implements Parser {
     String password = "";
     String id;
     id = userNode.getAttributes().item(0).getTextContent();
-    //    logger.info(id);
     NodeList userElements = userNode.getChildNodes();
     for (int i = 0; i < userElements.getLength(); i++) {
       if (userElements.item(i).getNodeType() != Node.ELEMENT_NODE) {
         continue;
       }
-      if (userElements.item(i).getNodeName().equals("login")) {
-        login = userElements.item(i).getTextContent();
-        //        logger.info(login);
-      } else if (userElements.item(i).getNodeName().equals("password")) {
-        password = userElements.item(i).getTextContent();
-        //        logger.info(password);
-      } else if (userElements.item(i).getNodeName().equals("id")) {
-        id = userElements.item(i).getTextContent();
-        //        logger.info(id);
+      switch (userElements.item(i).getNodeName()) {
+        case "login":
+          login = userElements.item(i).getTextContent();
+          break;
+        case "password":
+          password = userElements.item(i).getTextContent();
+          break;
+        case "id":
+          id = userElements.item(i).getTextContent();
+          break;
       }
     }
     return new User.UserBuilder().login(login).password(password).id(id).build();
@@ -118,14 +116,15 @@ public class DomParser implements Parser {
       if (userElements.item(i).getNodeType() != Node.ELEMENT_NODE) {
         continue;
       }
-      if (userElements.item(i).getNodeName().equals("products")) {
-        Node productsNode = userElements.item(i);
-        products = customerProductsParse(productsNode);
-        //        logger.info(products);
-      } else if (userElements.item(i).getNodeName().equals("orders")) {
-        Node ordersNode = userElements.item(i);
-        orders = customerOrdersParse(ordersNode);
-        //        logger.info(orders);
+      switch (userElements.item(i).getNodeName()) {
+        case "products":
+          Node productsNode = userElements.item(i);
+          products = customerProductsParse(productsNode);
+          break;
+        case "orders":
+          Node ordersNode = userElements.item(i);
+          orders = customerOrdersParse(ordersNode);
+          break;
       }
     }
     return new Customer.CustomerBuilder()
@@ -154,10 +153,8 @@ public class DomParser implements Parser {
           }
           if (productElements.item(j).getNodeName().equals("productNumber")) {
             productNumber = Integer.parseInt(productElements.item(j).getTextContent());
-            //            logger.info(productNumber);
           } else if (productElements.item(j).getNodeName().equals("description")) {
             description = productElements.item(j).getTextContent();
-            //            logger.info(description);
           }
         }
         productsList.add(
@@ -185,13 +182,10 @@ public class DomParser implements Parser {
           if (productElements.item(j).getNodeType() != Node.ELEMENT_NODE) {
             continue;
           }
-
           if (productElements.item(j).getNodeName().equals("date")) {
             orderDateTime = LocalDateTime.parse(productElements.item(j).getTextContent());
-            //            logger.info(orderDateTime);
           } else if (productElements.item(j).getNodeName().equals("content")) {
             orderContent = productElements.item(j).getTextContent();
-            //            logger.info(orderContent);
           }
         }
         orderList.add(
