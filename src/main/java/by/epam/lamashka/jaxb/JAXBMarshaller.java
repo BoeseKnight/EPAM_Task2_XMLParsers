@@ -1,4 +1,4 @@
-package by.epam.lamashka.parser;
+package by.epam.lamashka.jaxb;
 
 import by.epam.lamashka.entity.Customer;
 import by.epam.lamashka.entity.User;

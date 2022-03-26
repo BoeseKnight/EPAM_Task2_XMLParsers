@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ParserTests {
   @Test
-  public void testUser() {
+  public void testFirstUser() {
     Parser domParser = ParserFactory.getInstance().getDomParser();
     List<User> users = domParser.run();
     Assert.assertEquals(
