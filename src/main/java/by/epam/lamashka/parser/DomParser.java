@@ -55,70 +55,10 @@ public class DomParser {
       }
     }
     logger.info("DOM"+userList);
-//    try {
-//      // create JAXB context and instantiate marshaller
-//      JAXBContext context = JAXBContext.newInstance(Users.class);
-//
-//      // (1) Marshaller : Java Object to XML content.
-//      Marshaller m = context.createMarshaller();
-//      m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//      Users usersMarshalling=new Users(userList);
-//      // Write to System.out
-//      m.marshal(usersMarshalling, System.out);
-//
-//      // Write to File
-//      File outFile = new File("marshall.xml");
-//      m.marshal(usersMarshalling, outFile);
-//
-//      System.err.println("Write to file: " + outFile.getAbsolutePath());
-//
-//
-//      // (2) Unmarshaller : Read XML content to Java Object.
-////      Unmarshaller um = context.createUnmarshaller();
-////
-////      // XML file create before.
-////      Customer deptFromFile = (Customer) um.unmarshal(new FileReader(
-////              "marshall.xml"));
-////      List<Product> emps = deptFromFile.getProducts();
-////      for (Product emp : emps) {
-////        logger.info(emp);
-////      }
-//
-//    } catch (Exception e) {
-//      e.printStackTrace();
-//    }
-    try {
-      // create JAXB context and instantiate marshaller
-      JAXBContext context = JAXBContext.newInstance(Customer.class);
-
-      // (1) Marshaller : Java Object to XML content.
-      Marshaller m = context.createMarshaller();
-      m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-      Users usersMarshalling=new Users(userList);
-      // Write to System.out
-      m.marshal(userList.get(5), System.out);
-
-      // Write to File
-      File outFile = new File("marshall.xml");
-      m.marshal(userList.get(5), outFile);
-
-      System.err.println("Write to file: " + outFile.getAbsolutePath());
-
-
-//       (2) Unmarshaller : Read XML content to Java Object.
-      Unmarshaller um = context.createUnmarshaller();
-
-      // XML file create before.
-      Customer deptFromFile = (Customer) um.unmarshal(new FileReader(
-              "marshall.xml"));
-      List<Product> emps = deptFromFile.getProducts();
-      for (Product emp : emps) {
-//        logger.info(emp);
-      }
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    JAXB marshaller=new JAXBMarshaller();
+    JAXB unmarshaller=new JAXBUnmarshaller();
+    marshaller.run(userList);
+    unmarshaller.run(userList);
   }
 
   private Document documentBuilder() throws URISyntaxException {

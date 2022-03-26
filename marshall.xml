@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<customer>
-    <login>Karol</login>
-    <password>45g</password>
-    <id>ID-6</id>
-    <products>
-        <product>
-            <productNumber>231000</productNumber>
-            <description>Volkswagen</description>
-        </product>
-        <product>
-            <productNumber>4376828</productNumber>
-            <description>Mazda</description>
-        </product>
-        <product>
-            <productNumber>34304900</productNumber>
-            <description>Nissan</description>
-        </product>
-    </products>
-    <orders>
-        <order>
-            <orderContent>BMW, Reno</orderContent>
-        </order>
-    </orders>
-</customer>
+<users>
+    <user>
+        <login>Ilya</login>
+        <password>2</password>
+        <id>ID-1</id>
+    </user>
+    <user>
+        <login>Ksenia</login>
+        <password>3</password>
+        <id>ID-2</id>
+    </user>
+    <user>
+        <login>Andrew</login>
+        <password>8</password>
+        <id>ID-3</id>
+    </user>
+    <user>
+        <login>Dima</login>
+        <password>6</password>
+        <id>ID-4</id>
+    </user>
+    <user>
+        <login>Egor</login>
+        <password>6</password>
+        <id>ID-5</id>
+    </user>
+    <user>
+        <login>Karol</login>
+        <password>45g</password>
+        <id>ID-6</id>
+    </user>
+    <user>
+        <login>Jim</login>
+        <password>jim223</password>
+        <id>ID-7</id>
+    </user>
+    <user>
+        <login>Jack</login>
+        <password>7892jack</password>
+        <id>ID-8</id>
+    </user>
+</users>

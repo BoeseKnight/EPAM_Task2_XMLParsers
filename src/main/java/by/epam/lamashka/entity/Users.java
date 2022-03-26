@@ -5,7 +5,6 @@ import java.util.List;
 
 @XmlRootElement(name="users")
 @XmlAccessorType(XmlAccessType.FIELD)
-
 public class Users {
 //    @XmlElementWrapper(name = "users")
     @XmlElement(name = "user")
