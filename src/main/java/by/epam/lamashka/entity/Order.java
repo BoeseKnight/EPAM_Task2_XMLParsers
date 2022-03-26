@@ -6,11 +6,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
 @XmlRootElement(name = "order")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Order {
-  @XmlTransient
-  private LocalDateTime orderDateTime;
+  @XmlTransient private LocalDateTime orderDateTime;
   private String orderContent;
 
   private Order(OrderBuilder builder) {
@@ -60,6 +60,12 @@ public class Order {
 
   @Override
   public String toString() {
-    return "Order{" + "orderDateTime=" + orderDateTime + ", orderContent='" + orderContent + '\'' + '}';
+    return "Order{"
+        + "orderDateTime="
+        + orderDateTime
+        + ", orderContent='"
+        + orderContent
+        + '\''
+        + '}';
   }
 }

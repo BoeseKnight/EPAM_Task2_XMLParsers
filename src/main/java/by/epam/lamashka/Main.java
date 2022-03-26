@@ -5,7 +5,6 @@ import by.epam.lamashka.parser.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.net.URL;
 import java.util.List;
 
 public class Main {
@@ -14,10 +13,14 @@ public class Main {
   public static void main(String[] args) {
     logger.info("XML_PROJECT");
     Parser domParser = ParserFactory.getInstance().getDomParser();
-    domParser.run();
+    List<User> userList = domParser.run();
     Parser staxParser = ParserFactory.getInstance().getStaxParser();
     staxParser.run();
     Parser saxParser = ParserFactory.getInstance().getSaxParser();
     saxParser.run();
+    JAXB marshaller = new JAXBMarshaller();
+    JAXB unmarshaller = new JAXBUnmarshaller();
+    marshaller.run(userList);
+    unmarshaller.run(userList);
   }
 }

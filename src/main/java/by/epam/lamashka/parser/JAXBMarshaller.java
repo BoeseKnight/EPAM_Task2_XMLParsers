@@ -17,10 +17,10 @@ public class JAXBMarshaller implements JAXB {
 
   @Override
   public void run(List<User> userList) {
-    List<Customer> customerList=new ArrayList<>();
+    List<Customer> customerList = new ArrayList<>();
     // (1) Marshaller : Java Object to XML content.
-    for(User user: userList){
-      if(user instanceof Customer){
+    for (User user : userList) {
+      if (user instanceof Customer) {
         customerList.add((Customer) user);
       }
     }

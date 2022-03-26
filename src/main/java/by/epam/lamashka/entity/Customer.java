@@ -15,13 +15,12 @@ public class Customer extends User {
   @XmlElement(name = "order")
   private List<Order> orders;
 
-  public Customer() {
-  }
+  public Customer() {}
 
   private Customer(CustomerBuilder builder) {
     super(builder);
     this.products = builder.products;
-    this.orders=builder.orders;
+    this.orders = builder.orders;
   }
 
   public List<Product> getProducts() {

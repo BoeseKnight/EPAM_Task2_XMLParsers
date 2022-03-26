@@ -11,8 +11,7 @@ import java.util.Objects;
 public class User {
   protected String login;
   protected String password;
-  @XmlAttribute
-  protected String id;
+  @XmlAttribute protected String id;
 
   public User() {}
 

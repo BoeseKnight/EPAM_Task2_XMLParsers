@@ -65,10 +65,6 @@ public class DomParser implements Parser {
       }
     }
     logger.info("DOM" + userList);
-    JAXB marshaller = new JAXBMarshaller();
-    JAXB unmarshaller = new JAXBUnmarshaller();
-    marshaller.run(userList);
-    unmarshaller.run(userList);
     return userList;
   }
 
