@@ -27,6 +27,7 @@ public class JAXBUnmarshaller implements JAXB {
       for (User user : userList) {
         logger.info(user);
       }
+      logger.info("------------------------------");
     } catch (Exception e) {
       e.printStackTrace();
     }

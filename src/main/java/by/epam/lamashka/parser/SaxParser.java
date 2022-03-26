@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaxParser {
+public class SaxParser implements Parser {
   private static final Logger logger = LogManager.getLogger(SaxParser.class);
   private List<User> userList = new ArrayList<>();
   private List<Product> productList = new ArrayList<>();
@@ -35,21 +35,25 @@ public class SaxParser {
   private String productNumber;
   private String description;
 
-  public void run() throws ParserConfigurationException, SAXException, URISyntaxException {
+  @Override
+  public List<User> run() {
     SAXParserFactory factory = SAXParserFactory.newInstance();
-    SAXParser parser = factory.newSAXParser();
-    XMLHandler handler = new XMLHandler();
-    URL resource = getClass().getClassLoader().getResource("Users.xml");
-    if (resource == null) {
-      throw new IllegalArgumentException("File Not Found!");
-    }
-    File usersFile = new File(resource.toURI());
+    SAXParser parser = null;
     try {
+      parser = factory.newSAXParser();
+      XMLHandler handler = new XMLHandler();
+      URL resource = getClass().getClassLoader().getResource("Users.xml");
+      if (resource == null) {
+        throw new IllegalArgumentException("File Not Found!");
+      }
+      File usersFile = null;
+      usersFile = new File(resource.toURI());
       parser.parse(usersFile, handler);
-    } catch (IOException e) {
+    } catch (URISyntaxException | ParserConfigurationException | IOException | SAXException e) {
       e.printStackTrace();
     }
     logger.info(" SAX " + userList);
+    return userList;
   }
 
   private class XMLHandler extends DefaultHandler {
@@ -85,14 +89,16 @@ public class SaxParser {
           productList = new ArrayList<>();
           break;
         case "product":
-          Product product = new Product.ProductBuilder()
+          Product product =
+              new Product.ProductBuilder()
                   .productNumber(Integer.parseInt(productNumber))
                   .description(description)
                   .build();
           productList.add(product);
           break;
         case "order":
-          Order order = new Order.OrderBuilder()
+          Order order =
+              new Order.OrderBuilder()
                   .orderDateTime(LocalDateTime.parse(orderDateTime))
                   .orderContent(orderContent)
                   .build();

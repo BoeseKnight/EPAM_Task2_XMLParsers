@@ -1,43 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <users>
-    <user>
+    <user id="ID-1">
         <login>Ilya</login>
         <password>2</password>
-        <id>ID-1</id>
     </user>
-    <user>
+    <user id="ID-2">
         <login>Ksenia</login>
         <password>3</password>
-        <id>ID-2</id>
     </user>
-    <user>
+    <user id="ID-3">
         <login>Andrew</login>
         <password>8</password>
-        <id>ID-3</id>
     </user>
-    <user>
+    <user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer" id="ID-4">
         <login>Dima</login>
         <password>6</password>
-        <id>ID-4</id>
+        <products>
+            <product>
+                <productNumber>12353</productNumber>
+                <description>Mercedes</description>
+            </product>
+            <product>
+                <productNumber>1236</productNumber>
+                <description>Reno</description>
+            </product>
+        </products>
     </user>
-    <user>
+    <user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer" id="ID-5">
         <login>Egor</login>
         <password>6</password>
-        <id>ID-5</id>
+        <products>
+            <product>
+                <productNumber>345</productNumber>
+                <description>BMW</description>
+            </product>
+        </products>
     </user>
-    <user>
+    <user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer" id="ID-6">
         <login>Karol</login>
         <password>45g</password>
-        <id>ID-6</id>
+        <products>
+            <product>
+                <productNumber>231000</productNumber>
+                <description>Volkswagen</description>
+            </product>
+            <product>
+                <productNumber>4376828</productNumber>
+                <description>Mazda</description>
+            </product>
+            <product>
+                <productNumber>34304900</productNumber>
+                <description>Nissan</description>
+            </product>
+        </products>
+        <orders>
+            <order>
+                <orderContent>BMW, Reno</orderContent>
+            </order>
+        </orders>
     </user>
-    <user>
+    <user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer" id="ID-7">
         <login>Jim</login>
         <password>jim223</password>
-        <id>ID-7</id>
+        <products>
+            <product>
+                <productNumber>553320</productNumber>
+                <description>Porsche</description>
+            </product>
+            <product>
+                <productNumber>5453553</productNumber>
+                <description>Lexus</description>
+            </product>
+        </products>
     </user>
-    <user>
+    <user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="customer" id="ID-8">
         <login>Jack</login>
         <password>7892jack</password>
-        <id>ID-8</id>
+        <products>
+            <product>
+                <productNumber>34304900</productNumber>
+                <description>Volvo</description>
+            </product>
+        </products>
+        <orders>
+            <order>
+                <orderContent>Mitsubishi</orderContent>
+            </order>
+            <order>
+                <orderContent>Bugatti</orderContent>
+            </order>
+            <order>
+                <orderContent>Maserati</orderContent>
+            </order>
+        </orders>
     </user>
 </users>

@@ -16,12 +16,11 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaxParser {
+public class StaxParser implements Parser {
   private static final Logger logger = LogManager.getLogger(StaxParser.class);
   private String id;
   private String login;
@@ -34,7 +33,8 @@ public class StaxParser {
   private List<Order> orderList = new ArrayList<>();
   LocalDateTime date;
 
-  public void run() throws URISyntaxException, XMLStreamException {
+  @Override
+  public List<User> run() {
     InputStream resource = getClass().getClassLoader().getResourceAsStream("Users.xml");
     if (resource == null) {
       throw new IllegalArgumentException("File Not Found!");
@@ -125,5 +125,6 @@ public class StaxParser {
       e.printStackTrace();
     }
     logger.info("StAX " + userList);
+    return userList;
   }
 }
