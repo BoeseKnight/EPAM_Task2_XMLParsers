@@ -18,10 +18,8 @@ public class JAXBUnmarshaller implements JAXB {
     try {
       JAXBContext context = JAXBContext.newInstance(Users.class);
 
-      //       (2) Unmarshaller : Read XML content to Java Object.
       Unmarshaller unmarshaller = context.createUnmarshaller();
 
-      // XML file create before.
       Users deptFromFile =
           (Users) unmarshaller.unmarshal(new FileReader("src/main/resources/marshall.xml"));
       userList = deptFromFile.getUsers();
@@ -29,7 +27,6 @@ public class JAXBUnmarshaller implements JAXB {
       for (User user : userList) {
         logger.info(user);
       }
-      logger.info("------------------------------");
     } catch (Exception e) {
       e.printStackTrace();
     }

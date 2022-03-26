@@ -35,6 +35,8 @@ public class SaxParser implements Parser {
   private String productNumber;
   private String description;
 
+  public SaxParser() {}
+
   @Override
   public List<User> run() {
     SAXParserFactory factory = SAXParserFactory.newInstance();

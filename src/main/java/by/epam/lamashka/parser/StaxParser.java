@@ -33,6 +33,8 @@ public class StaxParser implements Parser {
   private List<Order> orderList = new ArrayList<>();
   LocalDateTime date;
 
+  public StaxParser() {}
+
   @Override
   public List<User> run() {
     InputStream resource = getClass().getClassLoader().getResourceAsStream("Users.xml");

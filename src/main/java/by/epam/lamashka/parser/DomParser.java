@@ -27,10 +27,6 @@ public class DomParser implements Parser {
 
   public DomParser() {}
 
-  public DomParser(URL resource) {
-    this.resource = resource;
-  }
-
   @Override
   public List<User> run() {
     List<User> userList = new ArrayList<>();

@@ -30,7 +30,6 @@ public class Users {
     this.users = users;
   }
 
-
   @Override
   public String toString() {
     return "Users{" + "users=" + users + '}';

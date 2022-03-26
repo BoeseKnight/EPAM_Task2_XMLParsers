@@ -4,7 +4,8 @@ import by.epam.lamashka.entity.User;
 import by.epam.lamashka.jaxb.JAXB;
 import by.epam.lamashka.jaxb.JAXBMarshaller;
 import by.epam.lamashka.jaxb.JAXBUnmarshaller;
-import by.epam.lamashka.parser.*;
+import by.epam.lamashka.parser.Parser;
+import by.epam.lamashka.parser.ParserFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
