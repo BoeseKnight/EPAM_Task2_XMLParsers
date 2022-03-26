@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customer>
+    <login>Karol</login>
+    <password>45g</password>
+    <id>ID-6</id>
+    <products>
+        <product>
+            <productNumber>231000</productNumber>
+            <description>Volkswagen</description>
+        </product>
+        <product>
+            <productNumber>4376828</productNumber>
+            <description>Mazda</description>
+        </product>
+        <product>
+            <productNumber>34304900</productNumber>
+            <description>Nissan</description>
+        </product>
+    </products>
+    <orders>
+        <order>
+            <orderContent>BMW, Reno</orderContent>
+        </order>
+    </orders>
+</customer>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users
+        xmlns="https://www.w3schools.com">
+    <user id="ID-1" role="Admin">
+        <login>Ilya</login>
+        <password>2</password>
+    </user>
+    <user id="ID-2">
+        <login>Ksenia</login>
+        <password>3</password>
+
+    </user>
+    <user id="ID-3">
+        <login>Andrew</login>
+        <password>8</password>
+
+    </user>
+    <customer id="ID-4">
+        <login>Dima</login>
+        <password>6</password>
+        <products>
+            <product>
+                <productNumber>12353</productNumber>
+                <description>Mercedes</description>
+            </product>
+            <product>
+                <productNumber>1236</productNumber>
+                <description>Reno</description>
+            </product>
+        </products>
+    </customer>
+    <customer id="ID-5">
+        <login>Egor</login>
+        <password>6</password>
+        <products>
+            <product>
+                <productNumber>345</productNumber>
+                <description>BMW</description>
+            </product>
+        </products>
+    </customer>
+    <customer id="ID-6">
+        <login>Karol</login>
+        <password>45g</password>
+        <products>
+            <product>
+                <productNumber>231000</productNumber>
+                <description>Volkswagen</description>
+            </product>
+            <product>
+                <productNumber>4376828</productNumber>
+                <description>Mazda</description>
+            </product>
+            <product>
+                <productNumber>34304900</productNumber>
+                <description>Nissan</description>
+            </product>
+        </products>
+        <orders>
+            <order>
+                <date>2022-01-27T10:15:00</date>
+                <content>BMW, Reno</content>
+            </order>
+        </orders>
+    </customer>
+    <customer id="ID-7">
+        <login>Jim</login>
+        <password>jim223</password>
+        <products>
+            <product>
+                <productNumber>553320</productNumber>
+                <description>Porsche</description>
+            </product>
+            <product>
+                <productNumber>5453553</productNumber>
+                <description>Lexus</description>
+            </product>
+        </products>
+    </customer>
+    <customer id="ID-8">
+        <login>Jack</login>
+        <password>7892jack</password>
+        <products>
+            <product>
+                <productNumber>34304900</productNumber>
+                <description>Volvo</description>
+            </product>
+        </products>
+        <orders>
+            <order>
+                <date>2002-05-30T09:00:00</date>
+                <content>Mitsubishi</content>
+            </order>
+        </orders>
+    </customer>
+</users>
